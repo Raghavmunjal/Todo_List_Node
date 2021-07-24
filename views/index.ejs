@@ -1,0 +1,29 @@
+<%- include("./partials/header.ejs") %>
+
+<nav class="navbar nav-clr">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Todo App</span>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <form action="/add/todo" method="POST" class="d-flex">
+        <input type="text" name="add" class="form-control" placeholder="Enter List Items">
+        <input type="submit" value="Add Item" class="btn btn-md nav-clr mx-2">
+    </form>
+    <ul class="list-group my-5">
+        <% items.forEach((item)=>{ %>
+            
+            <li class="list-group-item nav-clr my-2"><%= item.list_item %>
+                <a href="/delete/item/<%= item._id %>"
+                class="btn btn-clr btn-sm mx-5">Delete</a>
+                <a href="/update/item/<%= item._id %>"
+                    class="btn btn-clr btn-sm">Update</a>
+            </li>
+        
+        <% }) %>
+      </ul>
+</div>
+
+
+<%- include("./partials/footer.ejs") %>
